@@ -1,0 +1,23 @@
+
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] datadog_monitor.cpumonitor (expand)" [label = "datadog_monitor.cpumonitor", shape = "box"]
+		"[root] datadog_monitor.memmonitor (expand)" [label = "datadog_monitor.memmonitor", shape = "box"]
+		"[root] provider[\"registry.terraform.io/datadog/datadog\"]" [label = "provider[\"registry.terraform.io/datadog/datadog\"]", shape = "diamond"]
+		"[root] var.datadog_api_key" [label = "var.datadog_api_key", shape = "note"]
+		"[root] var.datadog_app_key" [label = "var.datadog_app_key", shape = "note"]
+		"[root] var.title" [label = "var.title", shape = "note"]
+		"[root] datadog_monitor.cpumonitor (expand)" -> "[root] local.type (expand)"
+		"[root] datadog_monitor.cpumonitor (expand)" -> "[root] provider[\"registry.terraform.io/datadog/datadog\"]"
+		"[root] datadog_monitor.cpumonitor (expand)" -> "[root] var.title"
+		"[root] datadog_monitor.memmonitor (expand)" -> "[root] datadog_monitor.cpumonitor (expand)"
+		"[root] output.mymonitor (expand)" -> "[root] datadog_monitor.cpumonitor (expand)"
+		"[root] provider[\"registry.terraform.io/datadog/datadog\"] (close)" -> "[root] datadog_monitor.memmonitor (expand)"
+		"[root] provider[\"registry.terraform.io/datadog/datadog\"]" -> "[root] var.datadog_api_key"
+		"[root] provider[\"registry.terraform.io/datadog/datadog\"]" -> "[root] var.datadog_app_key"
+		"[root] root" -> "[root] output.mymonitor (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/datadog/datadog\"] (close)"
+	}
+}

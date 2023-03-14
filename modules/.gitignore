@@ -1,0 +1,9 @@
+*.backup
+.terraform
+.terraform.lock.hcl
+*.auto.tfvars
+*.tfstate
+.idea
+__pycache__
+tfplan*.json
+.vscode
